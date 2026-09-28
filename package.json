@@ -1,0 +1,62 @@
+{
+  "name": "prviewer",
+  "version": "0.1.0",
+  "description": "Local GitHub pull request viewer with per-commit/per-file viewed tracking and Codex Q&A",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "prviewer": "./bin/prviewer.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "tsx watch src/cli/index.ts --no-open --port 4321 .",
+    "dev:client": "vite",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.server.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "npm run build",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.{ts,tsx}\""
+  },
+  "dependencies": {
+    "@git-diff-view/core": "^0.1.7",
+    "@git-diff-view/react": "^0.1.7",
+    "@hono/node-server": "^2.1.1",
+    "@primer/octicons-react": "^19.38.0",
+    "@primer/primitives": "^11.10.0",
+    "@primer/react": "^38.40.0",
+    "@tanstack/react-query": "^5.104.0",
+    "dompurify": "^3.4.16",
+    "github-markdown-css": "^5.9.0",
+    "hono": "^4.13.10",
+    "marked": "^18.0.14",
+    "open": "^11.0.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router": "^8.4.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.1.1",
+    "concurrently": "^9.2.1",
+    "jsdom": "^30.1.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  }
+}

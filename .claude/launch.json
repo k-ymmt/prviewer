@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "prviewer-hello-world",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "bin/prviewer.js",
+        "--no-open",
+        "--port",
+        "4380",
+        "/private/tmp/claude-501/-Users-kazukiyamamoto-Projects-typescript-prviewer/2bd13b50-0400-41e8-82a9-37146c65a3d4/scratchpad/hello-world"
+      ],
+      "port": 4380
+    }
+  ]
+}
